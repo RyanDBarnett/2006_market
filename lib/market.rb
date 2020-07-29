@@ -42,4 +42,21 @@ class Market
   def sorted_item_list
     total_inventory.keys.map(&:name).sort
   end
+
+  def sell(item, quantity)
+    if total_inventory[item] && total_inventory[item][:quantity] > quantity
+      vendors_that_sell(item).each do |vendor|
+        vendor_item_quantity = vendor.inventory[item]
+        if vendor_item_quantity < quantity
+          quantity = quantity - vendor_item_quantity
+          vendor.inventory[item] = 0
+        else
+          vendor.inventory[item] -= quantity
+        end
+      end
+      true
+    else
+      false
+    end
+  end
 end
