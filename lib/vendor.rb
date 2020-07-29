@@ -13,4 +13,12 @@ class Vendor
     @inventory[item] = 0 if !@inventory[item]
     @inventory[item] += quantity
   end
+
+  def potential_revenue
+    @inventory.keys.reduce(0) do |revenue, item|
+      item_quantity = @inventory[item]
+      revenue += item.price * item_quantity
+      revenue
+    end
+  end
 end
