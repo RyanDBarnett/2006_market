@@ -4,4 +4,8 @@ class Vendor
     @name = name
     @inventory = {}
   end
+
+  def check_stock item
+    @inventory[item] || 0
+  end
 end
