@@ -38,4 +38,8 @@ class Market
       overstocked_items
     end
   end
+
+  def sorted_item_list
+    total_inventory.keys.map(&:name).sort
+  end
 end
