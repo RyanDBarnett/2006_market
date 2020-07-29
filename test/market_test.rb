@@ -9,10 +9,18 @@ class VendorTest < Minitest::Test
     # @item1 = Item.new({name: 'Peach', price: "$0.75"})
     # @item2 = Item.new({name: 'Tomato', price: '$0.50'})
     # @vendor = Vendor.new('Rocky Mountain Fresh')
-    @market = Market.new("South Pearl Street Farmers Market")
+    @market = Market.new('South Pearl Street Farmers Market')
   end
 
   def test_it_exists
     assert_instance_of Market, @market
+  end
+
+  def test_has_name
+    assert_equal 'South Pearl Street Farmers Market', @market.name
+  end
+
+  def test_has_vendors
+    assert_equal [], @market.vendors
   end
 end
