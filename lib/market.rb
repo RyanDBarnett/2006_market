@@ -18,4 +18,15 @@ class Market
       vendor.inventory.keys.include?(item)
     end
   end
+
+  def total_inventory
+    @vendors.reduce({}) do |total_inventory, vendor|
+      vendor.inventory.keys.each do |item|
+        total_inventory[item] = {quantity: 0, vendors: []} unless total_inventory[item]
+        total_inventory[item][:quantity] += vendor.inventory[item]
+        total_inventory[item][:vendors] << vendor unless total_inventory[item][:vendors].include?(vendor)
+      end
+      total_inventory
+    end
+  end
 end
