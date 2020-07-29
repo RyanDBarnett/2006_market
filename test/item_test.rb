@@ -1,6 +1,5 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'mocha/minitest'
 require './lib/item'
 
 class ItemTest < Minitest::Test
